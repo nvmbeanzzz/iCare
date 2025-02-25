@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iCARE - FEU Institute of Technology</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            background-image: url('images/websitebg.png'); /* Set your background image here */
+            background-size: cover; /* Cover the entire viewport */
+            background-position: center; /* Center the image */
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            font-size: 0.5rem; /* Reduce font size by 50% */
+        }
+
+        header {
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5rem; /* Reduce font size by 50% */
+            color: #ccb80b;
+            margin: 0 0 -20px 0;
+            font-family: 'Dancing Script', cursive;
+        }
+
+        .logo {
+            margin: 30px 0;
+            transition: transform 0.3s ease; /* Smooth transition */
+            width: 1000px; /* Reduce width by 50% */
+        }
+
+        .logo:hover {
+            transform: scale(1.1); /* Scale up by 10% */
+        }
+
+        .button-container {
+            display: flex; /* Align buttons in a row */
+            justify-content: center; /* Center the buttons horizontally */
+            margin: 30px 0;
+        }
+
+        .button {
+            background-color: #FFD700;            
+            border-radius: 5px;
+            color: rgb(255, 255, 255);
+            padding: 7.5px; /* Reduce padding by 50% */
+            font-size: 1.25rem; /* Reduce font size by 50% */
+            width: 135px; /* Reduce width by 50% */
+            height: 35px; /* Reduce height by 50% */
+            margin: 0 10px; /* Space between buttons */
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none; /* Added for links */
+            font-weight: bolder;
+            display: flex; /* Use flexbox for centering */
+            align-items: center; /* Center vertically */
+            justify-content: center; /* Center horizontally */
+        }
+
+        .button:hover {
+            background-color: #23e85e;
+        }
+
+        footer {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 0.75rem; /* Reduce font size by 50% */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to,</h1>
+        <img class="logo" src="images/icare.png" alt="iCARE Logo" width="2000">
+        <p style="padding-bottom: 50px;"></p>
+    </header>
+   
+    <div class="button-container">
+        <a href="student.html" class="button">STUDENT</a>
+        &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+        <a href="admin.html" class="button">ADMIN</a>
+        &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+        <a href="faculty.html" class="button">FACULTY</a>
+    </div>
+    
+    <footer>
+        <p>
+            <a href="https://www.facebook.com/iCAREFEU/" style="color: #6349ce;">fb.com/iCareFEU</a> | 
+            <a href="mailto:icarevo@feutech.edu.ph" style="color: #00c49f;">icarevo@feutech.edu.ph</a>
+        </p>
+    </footer>
+</body>
+</html>
