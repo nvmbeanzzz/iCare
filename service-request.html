@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Request</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            background-color:#0b301f; 
+            background-size: cover; /* Cover the entire viewport */
+            background-position: center; /* Center the image */
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            font-size: 0.5rem; /* Reduce font size by 50% */
+        }
+        header {
+            text-align: center;
+            position: absolute;
+            top: 0;
+            width: 100%;
+            background-color: #ffd900;
+        }
+        h1 {
+            font-family: 'Bebas Neue', bold; /* Apply the custom font */
+            font-size: 3rem;
+            color: #000000;
+            padding: 10px 400px; /* Add padding to make the background longer */
+            margin: 0; /* Remove margin */
+            letter-spacing: 0.2em; /* Widen the spacing between letters */
+            text-align: center; /* Center the text */
+        }
+        .logo {
+            position: absolute;
+            top: 5px;
+            left: 10px;
+            width: 250px; 
+        }
+        .button-container {
+            display: flex; /* Align buttons in a row */
+            justify-content: center; /* Center the buttons horizontally */
+            margin: 30px 0;
+        }
+        .button {
+            background-color: #FFD700;            
+            border-radius: 5px;
+            color: rgb(255, 255, 255);
+            padding: 7.5px; /* Reduce padding by 50% */
+            font-size: 1.25rem; /* Reduce font size by 50% */
+            width: 135px; /* Reduce width by 50% */
+            height: 35px; /* Reduce height by 50% */
+            margin: 0 10px; /* Space between buttons */
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none; /* Added for links */
+            font-weight: bolder;
+            display: flex; /* Use flexbox for centering */
+            align-items: center; /* Center vertically */
+            justify-content: center; /* Center horizontally */
+        }
+        .button:hover {
+            background-color: #23e85e;
+        }
+        .emblem {
+            position: absolute;
+            top: 50;
+            left: 100px;
+            width: 100%;
+            
+        }
+        footer {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 0.75rem; /* Reduce font size by 50% */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>SERVICE REQUEST</h1> <!-- Center the text -->
+    </header>
+    <img class="logo" src="images/icare.png" alt="iCARE Logo" width="150"> <!-- Move the logo to the leftmost position -->
+    <p style="padding-bottom: 50px;"></p>
+   
+    <div class="button-container">
+        <a href="https://feutech-edu-ph.zoom.us/j/99809052576#success" class="button" target="_blank">ZOOM LINK</a>
+    </div>
+    <div class="emblem">
+        <img src="images/emblem.png" alt="Emblem" width="300">
+    </div>
+   
+</body>
+</html>
