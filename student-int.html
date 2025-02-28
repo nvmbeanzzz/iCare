@@ -22,6 +22,19 @@
             align-items: center;
             min-height: 100vh; /* Ensure the body covers the entire viewport height */
         }
+        .button {
+           
+            width: 135px; /* Reduce width by 50% */
+            height: 35px; /* Reduce height by 50% */
+            margin: 0 10px; /* Space between buttons */
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none; /* Added for links */
+            font-weight: bolder;
+            display: flex; /* Use flexbox for centering */
+            align-items: center; /* Center vertically */
+            justify-content: center; /* Center horizontally */
+        }
         h1 {
             font-family: 'Bebas Neue', bold; /* Apply the custom font */
             font-size: 3rem;
@@ -77,16 +90,24 @@
 <body>
     <h1>STUDENT INTERFACE</h1> <!-- Edit this line to change the text -->
     <div class="library-img">
-        <img src="images/library.png" alt="Library" width="300">
+        <a href="library.html">
+            <img src="images/library.png" alt="Library" width="300">
+        </a>
     </div>
     <div class="homepage-img">
-        <img src="images/homepage.png" alt="Homepage" width="400">
+        <a href="homepage.html">
+            <img src="images/homepage.png" alt="Homepage" width="400">
+        </a>
     </div>
     <div class="service-request-img">
-        <img src="images/service-request.png" alt="Service Request" width="330">
+        <a href="service-request.html">
+            <img src="images/service-request.png" alt="Service Request" width="330">
+        </a>
     </div>
     <div class="tutorial-img">
-        <img src="images/tutorial.png" alt="Tutorial" width="250">
+        <a href="tutorial.html">
+            <img src="images/tutorial.png" alt="Tutorial" width="250">
+        </a>
     </div>
     <div class="character">
         <img src="images/itam.png" alt="Mascot" width="370">
