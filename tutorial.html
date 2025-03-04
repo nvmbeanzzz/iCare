@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutorial</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            background-color: #0b301f;
+            background-size: cover;
+            background-position: center;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            font-size: 0.5rem;
+        }
+        header {
+            text-align: center;
+            position: absolute;
+            top: 0;
+            width: 100%;
+            background-color: #ffd900;
+        }
+        h1 {
+            font-family: 'Bebas Neue', bold;
+            font-size: 3rem;
+            color: #ffffff;
+            padding: 10px 400px;
+            margin: 0;
+            letter-spacing: 0.2em;
+            text-align: center; /* Center the text */
+        }
+        .logo {
+            position: absolute;
+            top: 5px;
+            left: 10px;
+            width: 250px;
+        }
+        .button-container {
+            display: flex;
+            justify-content: center;
+            margin: 30px 0;
+        }
+        .button {
+            background-color: #FFD700;
+            border-radius: 5px;
+            color: rgb(0, 0, 0);
+            padding: 7.5px;
+            font-size: 1.25rem;
+            width: 135px;
+            height: 35px;
+            margin: 0 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none;
+            font-weight: bolder;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2; /* Ensure button is on top */
+        }
+        .button:hover {
+            background-color: #23e85e;
+        }
+        .label {
+            color: rgb(255, 255, 255);
+            padding: 7.5px;
+            font-size: 1rem;
+            width: 200px; /* Increase width */
+            height: 50px; /* Increase height */
+            margin: 0 10px;
+           
+            text-decoration: none;
+            font-weight: bolder;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2; /* Ensure button is on top */
+            text-align: center; /* Center the text */
+            white-space: pre-wrap; /* Allow text to wrap to the next line */
+        }
+        .emblem {
+            position: absolute;
+            top: 110px; /* Adjust top position */
+            left: 100px;
+            width: 100%;
+            pointer-events: none; /* Make emblem non-interactive */
+        }
+        footer {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 0.75rem;
+        }
+        .form-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            top: 100px; /* Adjust top position */
+            left: calc(50% + 170px); /* Adjust left position */
+            transform: translateX(-50%);
+            width: 800px; /* Adjust width */
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 0px;
+            z-index: 1; /* Ensure form is below the emblem */
+        }
+        .form-container .form-row {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            flex-wrap: wrap;
+        }
+        .form-container .form-row .form-group {
+            width: 48%;
+            margin-bottom: 10px; /* Increase bottom margin */
+        }
+        .form-container input, .form-container select, .form-container textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: none;
+            font-size: 1rem;
+        }
+        .form-container input[type="text"]:not(#venue), .form-container input[type="email"], .form-container input[type="date"], .form-container input[type="datetime-local"] {
+            max-width: 365px; /* Limit the length of input boxes */
+        }
+        .form-container label {
+            width: 100%;
+            text-align: left;
+            margin-top: 5px;
+            font-size: 1rem;
+            display: block; /* Add page break */
+        }
+        .form-container .checkbox-label {
+            width: 100%;
+            text-align: left;
+            margin-top: 5px;
+            font-size: 1rem;
+            display: block; /* Add page break */
+        }
+        .form-container .checkbox-group {
+            display: flex;
+            text-align: center;
+            justify-content: space-between;
+            width: 100%;
+            margin-bottom: 20px; /* Add bottom margin */
+        }
+        .form-container .checkbox-group label {
+            width: 48%; /* Adjust width */
+            margin-bottom: 5px; /* Add bottom margin */
+            text-align: center; /* Center the text */
+            display: block; /* Add page break */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>TUTORIAL</h1>
+    </header>
+    <img class="logo" src="images/icare.png" alt="iCARE Logo" width="150">
+    <p style="padding-bottom: 50px;"></p>
+   
+    <div class="emblem">
+        <img src="images/emblem.png" alt="Emblem" width="300">
+    </div>
+    <div class="form-container">
+        <div class="form-row">
+            <div class="form-group">
+                <label for="student-name">Student Name:</label>
+                <input type="text" id="student-name" name="student-name" required>
+            </div>
+            <div class="form-group">
+                <label for="student-number">Student Number:</label>
+                <input type="text" id="student-number" name="student-number" required>
+            </div>
+        </div>
+        
+        <div class="form-row">
+            <div class="form-group">
+                <label for="subject-course-code">Subject Course Code:</label>
+                <input type="text" id="subject-course-code" name="subject-course-code" required>
+            </div>
+            <div class="form-group">
+                <label for="date">Date:</label>
+                <input type="date" id="date" name="date" required>
+            </div>
+        </div>
+        
+        <div class="form-row">
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="degree-program">Degree Program:</label>
+                <select id="degree-program" name="degree-program" required>
+                    <option value="cs">Computer Science</option>
+                    <option value="it">Information Technology</option>
+                    <option value="cpe">Computer Engineering</option>
+                    <option value="ce">Civil Engineering</option>
+                    <option value="ee">Electrical Engineering</option>
+                    <option value="me">Mechanical Engineering</option>
+                    <!-- Add more options as needed -->
+                </select>
+            </div>
+        </div>
+        
+        <div class="checkbox-label">Type of Tutorial:</div>
+        <div class="checkbox-group">
+            <label><input type="checkbox" name="tutorial-type" value="faculty"> Faculty Tutorial</label>
+            <label><input type="checkbox" name="tutorial-type" value="peer"> Peer Tutorial</label>
+        </div>
+        
+        <div class="checkbox-label">Setup:</div>
+        <div class="checkbox-group">
+            <label><input type="checkbox" name="setup" value="individual"> Individual</label>
+            <label><input type="checkbox" name="setup" value="group"> Group</label>
+        </div>
+        
+        <div class="form-row">
+            <div class="form-group">
+                <label for="preferred-schedule">Preferred Schedule:</label>
+                <input type="datetime-local" id="preferred-schedule" name="preferred-schedule" required>
+            </div>
+            <div class="form-group">
+                <label for="faculty-peer-tutor">Name of Faculty/Peer Tutor:</label>
+                <input type="text" id="faculty-peer-tutor" name="faculty-peer-tutor" required>
+            </div>
+        </div>
+        
+        <label for="venue">Venue:</label>
+        <input type="text" id="venue" name="venue" required>
+    </div>
+</body>
+</html>
