@@ -113,6 +113,11 @@
             padding: 20px;
             border-radius: 0px;
             z-index: 1; /* Ensure form is below the emblem */
+            margin: 5px 0; /* Adjust margin */
+        }
+        .form-container h2 {
+            font-size: 2rem; /* Add title size */
+            margin-top: 0; /* Reduce space on top */
         }
         .form-container .form-row {
             display: flex;
@@ -122,12 +127,12 @@
         }
         .form-container .form-row .form-group {
             width: 48%;
-            margin-bottom: 10px; /* Increase bottom margin */
+            margin-bottom: 5px; /* Reduce bottom margin */
         }
         .form-container input, .form-container select, .form-container textarea {
             width: 100%;
-            padding: 10px;
-            margin: 10px 0;
+            padding: 8px; /* Reduce padding */
+            margin: 5px 0; /* Reduce margin */
             border-radius: 5px;
             border: none;
             font-size: 1rem;
@@ -135,17 +140,20 @@
         .form-container input[type="text"]:not(#venue), .form-container input[type="email"], .form-container input[type="date"], .form-container input[type="datetime-local"] {
             max-width: 365px; /* Limit the length of input boxes */
         }
+        .form-container input[type="datetime-local"] {
+            width: 100%; /* Maximize the size of the preferred schedule box */
+        }
         .form-container label {
             width: 100%;
             text-align: left;
-            margin-top: 5px;
+            margin-top: 8px; /* Reduce margin */
             font-size: 1rem;
             display: block; /* Add page break */
         }
         .form-container .checkbox-label {
             width: 100%;
             text-align: left;
-            margin-top: 5px;
+            margin-bottom: 5px; /* Reduce margin */
             font-size: 1rem;
             display: block; /* Add page break */
         }
@@ -154,11 +162,11 @@
             text-align: center;
             justify-content: space-between;
             width: 100%;
-            margin-bottom: 20px; /* Add bottom margin */
+            margin-bottom: 5px; /* Add bottom margin */
         }
         .form-container .checkbox-group label {
             width: 48%; /* Adjust width */
-            margin-bottom: 5px; /* Add bottom margin */
+            margin-bottom: 5px; /* Reduce bottom margin */
             text-align: center; /* Center the text */
             display: block; /* Add page break */
         }
@@ -175,6 +183,7 @@
         <img src="images/emblem.png" alt="Emblem" width="300">
     </div>
     <div class="form-container">
+        <h2>Tutorial Request Form</h2> <!-- Edit this line to change the title of the form -->
         <div class="form-row">
             <div class="form-group">
                 <label for="student-name">Student Name:</label>
@@ -233,14 +242,11 @@
                 <label for="preferred-schedule">Preferred Schedule:</label>
                 <input type="datetime-local" id="preferred-schedule" name="preferred-schedule" required>
             </div>
-            <div class="form-group">
-                <label for="faculty-peer-tutor">Name of Faculty/Peer Tutor:</label>
-                <input type="text" id="faculty-peer-tutor" name="faculty-peer-tutor" required>
-            </div>
         </div>
         
-        <label for="venue">Venue:</label>
-        <input type="text" id="venue" name="venue" required>
+        <div class="button-container">
+            <button type="submit" class="button">Submit</button>
+        </div>
     </div>
 </body>
 </html>
