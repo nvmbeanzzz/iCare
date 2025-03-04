@@ -52,7 +52,7 @@
         .button {
             background-color: #FFD700;
             border-radius: 5px;
-            color: rgb(255, 255, 255);
+            color: rgb(0, 0, 0);
             padding: 7.5px;
             font-size: 1.25rem;
             width: 135px;
@@ -105,7 +105,7 @@
             align-items: center;
             justify-content: center;
             position: absolute;
-            top: 200px; /* Adjust top position */
+            top: 125px; /* Adjust top position */
             left: calc(50% + 200px); 
             transform: translateX(-50%);
             width: 400px; /* Increase width */
@@ -127,6 +127,7 @@
             text-align: left;
             margin-top: 10px;
             font-size: 1rem;
+            display: block; /* Add page break */
         }
     </style>
 </head>
@@ -141,6 +142,7 @@
         <img src="images/emblem.png" alt="Emblem" width="300">
     </div>
     <div class="form-container">
+        <h2>Service Request Form</h2> <!-- Add title on top of the form -->
         <label for="email">Email:</label>
         <input type="email" id="email" name="email" required>
         
@@ -170,6 +172,10 @@
             <option value="tutorial">Peer Tutorial</option>
             <!-- Add more options as needed -->
         </select>
+        
+        <div class="button-container">
+            <button type="submit" class="button">Submit</button> <!-- Add submit button -->
+        </div>
     </div>
     <div class="button-container" style="position: absolute; bottom: 10px; left: 160px;">
         <a href="https://feutech-edu-ph.zoom.us/j/99809052576#success" class="button" target="_blank">ZOOM LINK</a>
