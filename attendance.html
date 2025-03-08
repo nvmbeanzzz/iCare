@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Request</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            background-color: #0b301f;
+            background-size: cover;
+            background-position: center;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            font-size: 0.5rem;
+        }
+        header {
+            text-align: center;
+            position: absolute;
+            top: 0;
+            width: 100%;
+            background-color: #ffd900;
+        }
+        h1 {
+            font-family: 'Bebas Neue', bold;
+            font-size: 3rem;
+            color: #ffffff;
+            padding: 10px 400px;
+            margin: 0;
+            letter-spacing: 0.2em;
+            text-align: center; /* Center the text */
+        }
+        .logo {
+            position: absolute;
+            top: 5px;
+            left: 10px;
+            width: 250px;
+        }
+       
+        .button {
+            background-color: #FFD700;
+            border-radius: 5px;
+            color: rgb(0, 0, 0);
+            padding: 7.5px;
+            font-size: 1.25rem;
+            width: 135px;
+            height: 35px;
+            margin: 0 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none;
+            font-weight: bolder;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2; /* Ensure button is on top */
+        }
+        .button:hover {
+            background-color: #23e85e;
+        }
+        .label {
+            color: rgb(255, 255, 255);
+            padding: 7.5px;
+            font-size: 1rem;
+            width: 200px; /* Increase width */
+            height: 50px; /* Increase height */
+            margin: 0 10px;
+           
+            text-decoration: none;
+            font-weight: bolder;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2; /* Ensure button is on top */
+            text-align: center; /* Center the text */
+            white-space: pre-wrap; /* Allow text to wrap to the next line */
+        }
+        .emblem {
+            position: absolute;
+            top: 110px; /* Adjust top position */
+            left: 100px;
+            width: 100%;
+            pointer-events: none; /* Make emblem non-interactive */
+        }
+        footer {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 0.75rem;
+        }
+       
+        .date {
+            font-size: 1.5rem;
+            color: white;
+            position: absolute;
+            bottom: 120px;
+            left: 197px;
+            z-index: 2;
+        }
+        .clock {
+            font-size: 2rem;
+            color: white;
+            position: absolute;
+            bottom: 90px;
+            left: 167px;
+            z-index: 2;
+        }
+        .clock-icon {
+            width: 30px; /* Increase width */
+            height: 30px; /* Increase height */
+            margin-left: 5px;
+        }
+        .button-container {
+            position: absolute;
+            bottom: 40px; /* Adjust bottom position to make the button higher */
+            left: 160px;
+        }
+        .calendar-container {
+            position: absolute;
+            top: 165px;
+            right: 320px;
+            background-color: #ffffffec;
+            color: rgb(0, 0, 0);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            z-index: 2;
+        }
+        .calendar {
+            font-size: 1.5rem;
+        }
+        .calendar h2 {
+            margin-bottom: 10x; /* Add margin to the heading */
+        }
+        .calendar table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .calendar th, .calendar td {
+            border: 1px solid #000000;
+            padding: 10px;
+            text-align: center;
+        }
+        .calendar th {
+            background-color: #80e280;
+        }
+        .calendar td {
+            width: 200px; /* Make the time column longer in width */
+        }
+    </style>
+    <script>
+        function updateClock() {
+            const now = new Date();
+            const clock = document.getElementById('clock');
+            const date = document.getElementById('date');
+            clock.textContent = now.toLocaleTimeString();
+            date.textContent = now.toLocaleDateString();
+        }
+        setInterval(updateClock, 1000);
+        document.addEventListener('DOMContentLoaded', updateClock);
+
+        // Function to fetch schedule from backend
+        async function fetchSchedule() {
+            try {
+                const response = await fetch('/api/schedule'); // Replace with your backend endpoint
+                const schedule = await response.json();
+                updateSchedule(schedule);
+            } catch (error) {
+                console.error('Error fetching schedule:', error);
+            }
+        }
+
+        // Function to update the schedule table
+        function updateSchedule(schedule) {
+            const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+            days.forEach(day => {
+                const timeSlot = document.getElementById(day.toLowerCase());
+                timeSlot.textContent = schedule[day] || '';
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', fetchSchedule);
+    </script>
+</head>
+<body>
+    <header>
+        <h1>SERVICE REQUEST</h1>
+    </header>
+    <img class="logo" src="images/icare.png" alt="iCARE Logo" width="150">
+    <p style="padding-bottom: 50px;"></p>
+   
+    <div class="emblem">
+        <img src="images/emblem.png" alt="Emblem" width="300">
+    </div>
+
+    <div id="date" class="date"></div>
+    <div id="clock" class="clock"></div>
+    <div class="button-container">
+        <a href="https://feutech-edu-ph.zoom.us/j/99809052576#success" class="button" target="_blank">
+            CLOCK IN <img src="images/clock.png" alt="Clock Icon" class="clock-icon">
+        </a>
+    </div>
+    <div class="calendar-container">
+        <div class="calendar">
+            <h2>Schedule for the Week</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Day</th>
+                        <th>Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Monday</td>
+                        <td id="monday"></td>
+                    </tr>
+                    <tr>
+                        <td>Tuesday</td>
+                        <td id="tuesday"></td>
+                    </tr>
+                    <tr>
+                        <td>Wednesday</td>
+                        <td id="wednesday"></td>
+                    </tr>
+                    <tr>
+                        <td>Thursday</td>
+                        <td id="thursday"></td>
+                    </tr>
+                    <tr>
+                        <td>Friday</td>
+                        <td id="friday"></td>
+                    </tr>
+                    <tr>
+                        <td>Saturday</td>
+                        <td id="saturday"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
