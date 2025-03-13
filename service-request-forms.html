@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Request Forms</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            background-color: #0b301f;
+            background-size: cover;
+            background-position: center;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            font-size: 0.5rem;
+        }
+        header {
+            text-align: center;
+            position: absolute;
+            top: 0;
+            width: 100%;
+            background-color: #ffd900;
+        }
+        h1 {
+            font-family: 'Bebas Neue', bold;
+            font-size: 3rem;
+            color: #ffffff;
+            padding: 10px 400px;
+            margin: 0;
+            letter-spacing: 0.2em;
+            text-align: center; /* Center the text */
+        }
+        .logo {
+            position: absolute;
+            top: 5px;
+            left: 10px;
+            width: 250px;
+        }
+
+        .emblem {
+            position: absolute;
+            top: 120px; /* Adjust top position */
+            left: 110px;
+            pointer-events: none; /* Make emblem non-interactive */
+        }
+
+        .button {
+            background-color: #FFD700;
+            border-radius: 5px;
+            color: rgb(0, 0, 0);
+            padding: 7.5px;
+            font-size: 1.25rem;
+            width: 135px;
+            height: 35px;
+            margin: 0 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none;
+            font-weight: bolder;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2; /* Ensure button is on top */
+        }
+        .button:hover {
+            background-color: #23e85e;
+        }
+        .label {
+            color: rgb(255, 255, 255);
+            padding: 7.5px;
+            font-size: 1rem;
+            width: 200px; /* Increase width */
+            height: 50px; /* Increase height */
+            margin: 0 10px;
+           
+            text-decoration: none;
+            font-weight: bolder;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2; /* Ensure button is on top */
+            text-align: center; /* Center the text */
+            white-space: pre-wrap; /* Allow text to wrap to the next line */
+        }
+        .filters {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 150px; /* Bring the filters section up */
+            background-color: #4CAF50; /* Light green background */
+            padding: 10px;
+            border-radius: 10px;
+        }
+        .filters .left, .filters .right {
+            display: flex;
+            flex-direction: column;
+        }
+        .filters select, .filters input {
+            padding: 10px;
+            border-radius: 20px;
+            border: 6.5px solid #ffd900;
+            background-color: #ffffff;
+            color: #000000;
+            font-size: 1rem;
+            margin: 10px; /* Increase margin to add more space */
+            width: 350px; /* Make the width of term and department similar to academic year */
+            text-align: center; /* Center the text */
+        }
+        .filters input[type="text"] {
+            flex-grow: 1;
+            width: calc(100% - 50px); /* Adjust width to fit with the search button */
+        }
+        .filters .search-button {
+            background-color: #ffd900;
+            border: none;
+            border-radius: 20px;
+            padding: 5px 10px; /* Make the button smaller */
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 5px; /* Add some space between the input and button */
+        }
+        .filters .right {
+            margin-left: 200px; /* Move the right section further to the right */
+        }
+        .info-header {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin: 20px 0; /* Reduce margin to separate from filters */
+            text-align: center;
+            color: #044604; /* Green text color */
+            background-color: #ffd900; /* Yellow background color */
+            padding: 10px;
+            border-radius: 20px; /* Rounded corners */
+            display: inline-block; /* Fit content */
+        }
+        .table-container {
+            background-color: #ffffff; /* White background for the table */
+            padding: 20px;
+            border-radius: 10px;
+            width: 90%;
+            margin: 70px auto; /* Move the table section up */
+            overflow-y: auto; /* Add vertical scroll */
+            max-height: 900px; /* Set max height for the table container */
+            min-height: 40vh; /* Extend the white background to the bottom */
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid #000000; /* Black table lines */
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            height: 40px; /* Set height of cells to match the first row */
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center; /* Center the text */
+            font-size: 1.2rem; /* Make the text a little bit bigger */
+        }
+        th:nth-child(1), td:nth-child(1), th:nth-child(2), td:nth-child(2) {
+            width: 140px; /* Make the date and time cells wider */
+        }
+        th:nth-child(5), td:nth-child(5) {
+            width: 50px; /* Make the MI cell wider */
+        }
+        th:nth-child(7), td:nth-child(7) {
+            width: 180px; /* Make the service cell wider */
+        }
+        th:nth-child(8), td:nth-child(8) {
+            width: 180px; /* Make the service cell wider */
+        }
+        th:nth-child(3), td:nth-child(3), th:nth-child(4), td:nth-child(4) {
+            width: 180px; /* Make the last name and first name cells wider */
+        }
+        footer {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 0.75rem;
+        }
+        
+    </style>
+
+</head>
+<body>
+    <header>
+        <h1>Service Request Forms</h1>
+    </header>
+    <img class="logo" src="images/icare.png" alt="iCARE Logo" width="150">
+    <p style="padding-bottom: 50px;"></p>
+    <!-- Filters section for selecting academic year, term, department, and search keyword -->
+    <div class="filters">
+        <div class="left">
+            <!-- Dropdown for selecting academic year -->
+            <select class="academic-year">
+                <option>--Academic Year--</option>
+            </select>
+            <!-- Dropdown for selecting term -->
+            <select>
+                <option>--Term--</option>
+            </select>
+        </div>
+        <div class="right">
+            <!-- Dropdown for selecting department -->
+            <select>
+                <option>--Department--</option>
+            </select>
+            <!-- Input for entering search keyword and search button -->
+            <div style="display: flex; align-items: center; width: 350px;">
+                <input type="text" placeholder="--Search Keyword--">
+                <button class="search-button">🔍</button>
+            </div>
+        </div>
+    </div>
+    <div class="info-header" id="info-header">
+        TERM: 2 | SCHOOL YEAR: 24-25
+    </div>
+    <div class="table-container">
+        <table id="service-requests">
+            <thead>
+                <tr>
+                    <th>DATE</th>
+                    <th>TIME</th>
+                    <th>LAST NAME</th>
+                    <th>FIRST NAME</th>
+                    <th>MI</th>
+                    <th>COURSE</th>
+                    <th>SERVICE</th>
+                    <th>FACULTY NAME</th>
+                    <th>DEPARTMENT</th>
+                    <th>REMARKS</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Empty cells for the table -->
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="emblem">
+            <img src="images/emblem.png" alt="Emblem" width="140">
+        </div>
+    </div>
+    <script>
+        // Fetch data from the backend and populate the table
+        async function fetchServiceRequests(term, academicYear, department) {
+            try {
+                const response = await fetch(`/api/service-requests?term=${term}&academicYear=${academicYear}&department=${department}`);
+                const data = await response.json();
+                const tableBody = document.querySelector('#service-requests tbody');
+                tableBody.innerHTML = ''; // Clear existing entries
+                data.forEach(request => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${request.date}</td>
+                        <td>${request.time}</td>
+                        <td>${request.lastName}</td>
+                        <td>${request.firstName}</td>
+                        <td>${request.mi}</td>
+                        <td>${request.course}</td>
+                        <td>${request.service}</td>
+                        <td>${request.facultyName}</td>
+                        <td>${request.department}</td>
+                        <td>${request.remarks}</td>
+                    `;
+                    tableBody.appendChild(row);
+                });
+            } catch (error) {
+                console.error('Error fetching service requests:', error);
+            }
+        }
+
+        // Update info header based on selected filters
+        function updateInfoHeader() {
+            const term = document.querySelector('.filters select:nth-child(2)').value;
+            const academicYear = document.querySelector('.filters select:nth-child(1)').value;
+            const department = document.querySelector('.filters select:nth-child(3)').value;
+            const infoHeader = document.getElementById('info-header');
+            infoHeader.textContent = `TERM: ${term} | SCHOOL YEAR: ${academicYear}`;
+            fetchServiceRequests(term, academicYear, department); // Fetch data based on selected filters
+        }
+
+        // Add event listeners to update info header when filters change
+        document.querySelector('.filters select:nth-child(1)').addEventListener('change', updateInfoHeader);
+        document.querySelector('.filters select:nth-child(2)').addEventListener('change', updateInfoHeader);
+        document.querySelector('.filters select:nth-child(3)').addEventListener('change', updateInfoHeader);
+
+        // Call the function to fetch and populate data when the page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            const term = document.querySelector('.filters select:nth-child(2)').value;
+            const academicYear = document.querySelector('.filters select:nth-child(1)').value;
+            const department = document.querySelector('.filters select:nth-child(3)').value;
+            fetchServiceRequests(term, academicYear, department);
+        });
+    </script>
+</body>
+</html>
