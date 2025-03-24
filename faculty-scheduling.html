@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faculty Scheduling</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            background-color: #0b301f;
+            background-size: cover;
+            background-position: center;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            font-size: 0.5rem;
+        }
+        header {
+            text-align: center;
+            position: absolute;
+            top: 0;
+            width: 100%;
+            background-color: #ffd900;
+        }
+        h1 {
+            font-family: 'Bebas Neue', bold;
+            font-size: 3rem;
+            color: #ffffff;
+            padding: 10px 400px;
+            margin: 0;
+            letter-spacing: 0.2em;
+            text-align: center; /* Center the text */
+        }
+        .logo {
+            position: absolute;
+            top: 5px;
+            left: 10px;
+            width: 250px;
+        }
+
+        .emblem {
+            position: absolute;
+            top: 120px; /* Adjust top position */
+            left: 110px;
+            pointer-events: none; /* Make emblem non-interactive */
+        }
+
+        .button {
+            background-color: #FFD700;
+            border-radius: 5px;
+            color: rgb(0, 0, 0);
+            padding: 5px; /* Reduced padding */
+            font-size: 1rem; /* Reduced font size */
+            width: 100px; /* Reduced width */
+            height: 30px; /* Reduced height */
+            margin: 0 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none;
+            font-weight: bolder;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2; /* Ensure button is on top */
+        }
+        .button:hover {
+            background-color: #23e85e;
+        }
+        .label {
+            color: rgb(255, 255, 255);
+            padding: 7.5px;
+            font-size: 1rem;
+            width: 200px; /* Increase width */
+            height: 50px; /* Increase height */
+            margin: 0 10px;
+           
+            text-decoration: none;
+            font-weight: bolder;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2; /* Ensure button is on top */
+            text-align: center; /* Center the text */
+            white-space: pre-wrap; /* Allow text to wrap to the next line */
+        }
+        .filters {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 150px; /* Bring the filters section up */
+            background-color: #4CAF50; /* Light green background */
+            padding: 10px;
+            border-radius: 10px;
+        }
+        .filters .left, .filters .right {
+            display: flex;
+            flex-direction: column;
+        }
+        .filters select, .filters input {
+            padding: 10px;
+            border-radius: 20px;
+            border: 6.5px solid #ffd900;
+            background-color: #ffffff;
+            color: #000000;
+            font-size: 1rem;
+            margin: 10px; /* Increase margin to add more space */
+            width: 350px; /* Make the width of term and department similar to academic year */
+            text-align: center; /* Center the text */
+        }
+        .filters input[type="text"] {
+            flex-grow: 1;
+            width: calc(100% - 50px); /* Adjust width to fit with the search button */
+        }
+        .filters .search-button {
+            background-color: #ffd900;
+            border: none;
+            border-radius: 20px;
+            padding: 5px 10px; /* Make the button smaller */
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 5px; /* Add some space between the input and button */
+        }
+        .filters .right {
+            margin-left: 200px; /* Move the right section further to the right */
+        }
+        .info-header {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin: 20px 0; /* Reduce margin to separate from filters */
+            text-align: center;
+            color: #044604; /* Green text color */
+            background-color: #ffd900; /* Yellow background color */
+            padding: 10px;
+            border-radius: 20px; /* Rounded corners */
+            display: inline-block; /* Fit content */
+            font-family: 'Sans-serif', Arial, Helvetica;
+        }
+        .table-container {
+            background-color: #ffffff; /* White background for the table */
+            padding: 20px;
+            border-radius: 10px;
+            width: 90%;
+            margin: 50px auto; /* Decrease the top margin */
+            overflow-y: auto; /* Add vertical scroll */
+            max-height: 900px; /* Set max height for the table container */
+            min-height: 40vh; /* Extend the white background to the bottom */
+            margin-bottom: 20px; /* Decrease the bottom margin */
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid #000000; /* Black table lines */
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            height: 40px; /* Set height of cells to match the first row */
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center; /* Center the text */
+            font-size: 1.2rem; /* Make the text a little bit bigger */
+        }
+
+        th:nth-child(1), td:nth-child(1), th:nth-child(2), th:nth-child(2), th:nth-child(3), th:nth-child(3)    {
+            width: 200px; /* Make the last name and first name cells wider */
+        }
+        
+        th:nth-child(4), td:nth-child(4), th:nth-child(5) {
+            width: 200px; /* Make the last name and first name cells wider */
+        }
+        th:nth-child(6), td:nth-child(6), th:nth-child(7), td:nth-child(7) {
+            width: 200px; /* Make the type cell wider */
+        }
+        th:nth-child(7), td:nth-child(7) {
+            width: 200px; /* Make the remarks cell wider */
+        }
+        footer {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 0.75rem;
+        }
+        
+    </style>
+
+</head>
+<body>
+    <header>
+        <h1>FACULTY SCHEDULING</h1>
+    </header>
+    <img class="logo" src="images/icare.png" alt="iCARE Logo" width="150">
+    <p style="padding-bottom: 50px;"></p>
+    <!-- Filters section for selecting academic year, term, department, and search keyword -->
+    <div class="filters">
+        <div class="left">
+            <!-- Dropdown for selecting academic year -->
+            <select id="academic-year" class="academic-year">
+                <option>--Academic Year--</option>
+                <option selected>24-25</option> <!-- Set 24-25 as the default -->
+            </select>
+            <!-- Dropdown for selecting term -->
+            <select id="term">
+                <option>--Term--</option>
+                <option selected>2</option> <!-- Set 2 as the default -->
+            </select>
+        </div>
+        <div class="right">
+            <!-- Dropdown for selecting department -->
+            <select id="department">
+                <option>--Department--</option>
+            </select>
+            <!-- Input for entering search name and search button -->
+            <div style="display: flex; align-items: center; width: 350px;">
+                <input id="search-name" type="text" placeholder="--Search Name--">
+                <button class="search-button">🔍</button>
+            </div>
+        </div>
+    </div>
+    <div class="info-header" id="info-header">
+        TERM: 2 | SCHOOL YEAR: 24-25 | Total iCare Hours: 12.33 | DEPT: CPE<br><br>
+        <span style="font-size: 1.5rem;">Bayono, Mona Earl P.</span>
+    </div>
+    <div class="table-container">
+        <table id="faculty-scheduling-table">
+            <thead>
+                <tr>
+                    <th>Monday</th>
+                    <th>Tuesday</th>
+                    <th>Wednesday</th>
+                    <th>Thursday</th>
+                    <th>Friday</th>
+                    <th>Saturday</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="emblem">
+            <img src="images/emblem.png" alt="Emblem" width="140">
+        </div>
+    </div>
+    <script>
+
+        // Add logic to update the info header dynamically
+        function updateInfoHeader() {
+            const term = document.querySelector('.filters select:nth-child(2)').value;
+            const academicYear = document.querySelector('.filters select:nth-child(1)').value;
+            const infoHeader = document.getElementById('info-header');
+            infoHeader.textContent = `TERM: ${term} | SCHOOL YEAR: ${academicYear}`;
+        }
+
+        // Add event listeners to update the info header when filters change
+        document.querySelector('.filters select:nth-child(1)').addEventListener('change', updateInfoHeader);
+        document.querySelector('.filters select:nth-child(2)').addEventListener('change', updateInfoHeader);
+        document.querySelector('.filters select:nth-child(3)').addEventListener('change', updateInfoHeader);
+
+        // Call the function to fetch and populate data when the page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            const term = document.querySelector('.filters select:nth-child(2)').value;
+            const academicYear = document.querySelector('.filters select:nth-child(1)').value;
+            const department = document.querySelector('.filters select:nth-child(3)').value;
+            fetchTransactions(term, academicYear, department);
+            updateInfoHeader();
+        });
+
+        // Add functionality to send academic year, term, department, and search keyword to the backend
+        document.querySelector('.search-button').addEventListener('click', async () => {
+            const academicYear = document.querySelector('.filters select:nth-child(1)').value;
+            const term = document.querySelector('.filters select:nth-child(2)').value;
+            const department = document.querySelector('.filters select:nth-child(3)').value;
+
+            try {
+                const response = await fetch('/api/search-transactions', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        academicYear,
+                        term,
+                        department,
+                        searchKeyword,
+                    }),
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    const tableBody = document.querySelector('#transactions tbody');
+                    tableBody.innerHTML = ''; // Clear existing entries
+                    data.forEach(transaction => {
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                            <td>${transaction.date}</td>
+                            <td>${transaction.timeIn}</td>
+                            <td>${transaction.timeOut}</td>
+                            <td>${transaction.lastName}</td>
+                            <td>${transaction.firstName}</td>
+                            <td>${transaction.type}</td>
+                            <td>${transaction.remarks}</td>
+                        `;
+                        tableBody.appendChild(row);
+                    });
+                } else {
+                    alert('Failed to fetch data. Please try again.');
+                }
+            } catch (error) {
+                console.error('Error fetching data:', error);
+                alert('An error occurred while fetching data.');
+            }
+        });
+    </script>
+    <script>
+    // Update the info header dynamically based on inputs
+    function updateInfoHeader() {
+        const term = document.getElementById('term').value || '2';
+        const academicYear = document.getElementById('academic-year').value || '24-25';
+        const department = document.getElementById('department').value || 'CPE';
+        const totalHours = '12.33';
+
+        const infoHeader = document.getElementById('info-header');
+        infoHeader.innerHTML = `
+            TERM: ${term} | SCHOOL YEAR: ${academicYear} | Total iCare Hours: ${totalHours} | DEPT: ${department}<br><br>
+            <span style="font-size: 1.5rem;">Bayono, Mona Earl P.</span>
+        `;
+    }
+
+    // Add event listeners to update the info header when inputs change
+    document.getElementById('academic-year').addEventListener('change', updateInfoHeader);
+    document.getElementById('term').addEventListener('change', updateInfoHeader);
+    document.getElementById('department').addEventListener('change', updateInfoHeader);
+    document.getElementById('search-name').addEventListener('input', updateInfoHeader);
+
+    // Initialize the info header on page load
+    document.addEventListener('DOMContentLoaded', updateInfoHeader);
+</script>
+</body>
+</html>
