@@ -89,7 +89,7 @@
         }
         .emblem {
             position: absolute;
-            top: 110px; /* Adjust top position */
+            top: 205px; /* Adjust top position */
             left: 100px;
             width: 100%;
             pointer-events: none; /* Make emblem non-interactive */
@@ -105,7 +105,7 @@
             align-items: center;
             justify-content: center;
             position: absolute;
-            top: 100px; /* Adjust top position */
+            top: 190px; /* Adjust top position */
             left: calc(50% + 170px); /* Adjust left position */
             transform: translateX(-50%);
             width: 800px; /* Adjust width */
@@ -186,61 +186,34 @@
         <h2>Tutorial Request Form</h2> <!-- Edit this line to change the title of the form -->
         <div class="form-row">
             <div class="form-group">
-                <label for="student-name">Student Name:</label>
+                <label for="student-name">Student Number:</label>
                 <input type="text" id="student-name" name="student-name" required>
             </div>
             <div class="form-group">
-                <label for="student-number">Student Number:</label>
+                <label for="student-number">Department:</label>
                 <input type="text" id="student-number" name="student-number" required>
             </div>
         </div>
         
         <div class="form-row">
             <div class="form-group">
-                <label for="subject-course-code">Subject Course Code:</label>
+                <label for="subject-course-code">Tutor Name:</label>
                 <input type="text" id="subject-course-code" name="subject-course-code" required>
             </div>
             <div class="form-group">
-                <label for="date">Date:</label>
+                <label for="date">Schedule:</label>
                 <input type="date" id="date" name="date" required>
             </div>
         </div>
         
         <div class="form-row">
             <div class="form-group">
-                <label for="email">Email:</label>
+                <label for="email">Course Code:</label>
                 <input type="email" id="email" name="email" required>
             </div>
             <div class="form-group">
-                <label for="degree-program">Degree Program:</label>
-                <select id="degree-program" name="degree-program" required>
-                    <option value="cs">Computer Science</option>
-                    <option value="it">Information Technology</option>
-                    <option value="cpe">Computer Engineering</option>
-                    <option value="ce">Civil Engineering</option>
-                    <option value="ee">Electrical Engineering</option>
-                    <option value="me">Mechanical Engineering</option>
-                    <!-- Add more options as needed -->
-                </select>
-            </div>
-        </div>
-        
-        <div class="checkbox-label">Type of Tutorial:</div>
-        <div class="checkbox-group">
-            <label><input type="checkbox" name="tutorial-type" value="faculty"> Faculty Tutorial</label>
-            <label><input type="checkbox" name="tutorial-type" value="peer"> Peer Tutorial</label>
-        </div>
-        
-        <div class="checkbox-label">Setup:</div>
-        <div class="checkbox-group">
-            <label><input type="checkbox" name="setup" value="individual"> Individual</label>
-            <label><input type="checkbox" name="setup" value="group"> Group</label>
-        </div>
-        
-        <div class="form-row">
-            <div class="form-group">
-                <label for="preferred-schedule">Preferred Schedule:</label>
-                <input type="datetime-local" id="preferred-schedule" name="preferred-schedule" required>
+                <label for="degree-program">Module Topic:</label>
+                <input type="text" id="degree-program" name="degree-program" required>
             </div>
         </div>
         
