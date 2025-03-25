@@ -206,13 +206,13 @@
         <div class="left">
             <!-- Dropdown for selecting academic year -->
             <select id="academic-year" class="academic-year">
-                <option>--Academic Year--</option>
-                <option selected>24-25</option> <!-- Set 24-25 as the default -->
+                <option selected>Academic Year</option> <!-- Initial input -->
+                <option>24-25</option> <!-- Initial available option -->
             </select>
             <!-- Dropdown for selecting term -->
             <select id="term">
-                <option>--Term--</option>
-                <option selected>2</option> <!-- Set 2 as the default -->
+                <option selected>Term</option> <!-- Initial input -->
+                <option>2</option> <!-- Initial available option -->
             </select>
         </div>
         <div class="right">
@@ -351,11 +351,12 @@
         const academicYear = document.getElementById('academic-year').value || '24-25';
         const department = document.getElementById('department').value || 'CPE';
         const totalHours = '12.33';
+        const searchName = document.getElementById('search-name').value || 'Bayono, Mona Earl P.';
 
         const infoHeader = document.getElementById('info-header');
         infoHeader.innerHTML = `
             TERM: ${term} | SCHOOL YEAR: ${academicYear} | Total iCare Hours: ${totalHours} | DEPT: ${department}<br><br>
-            <span style="font-size: 1.5rem;">Bayono, Mona Earl P.</span>
+            <span style="font-size: 1.5rem;">${searchName}</span>
         `;
     }
 
